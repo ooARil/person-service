@@ -1,0 +1,15 @@
+server:
+  port: 8024
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=medical
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:init/schema.sql
