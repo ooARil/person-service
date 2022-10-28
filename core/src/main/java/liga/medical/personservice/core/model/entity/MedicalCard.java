@@ -1,5 +1,6 @@
-package liga.medical.personservice.core.model;
+package liga.medical.personservice.core.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Setter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
 
 import java.sql.Date;
 
@@ -26,13 +25,13 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "medical_card")
+@Table(name = "medical_card", schema = "medical")
 public class MedicalCard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "client_status", nullable = false, length = 1)
     private String clientStatus;
@@ -47,11 +46,12 @@ public class MedicalCard {
     private String comment;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicalCardId")
+    @JsonManagedReference
     private List<Illness> illnessIdList;
 
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-            mappedBy = "medicalCardId", fetch = FetchType.LAZY)
-    private PersonData personDataId;
+//    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+//            mappedBy = "medicalCardId", fetch = FetchType.LAZY)
+//    private PersonData personDataId;
 
     public void addIllnessToMedicalCard(Illness illness) {
         if (illnessIdList == null) {

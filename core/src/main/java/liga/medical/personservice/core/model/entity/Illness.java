@@ -1,5 +1,6 @@
-package liga.medical.personservice.core.model;
+package liga.medical.personservice.core.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Setter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,13 +25,13 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "illness")
+@Table(name = "illness", schema = "medical")
 public class Illness {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "type_id", nullable = false)
     private long typeId;
@@ -47,5 +48,6 @@ public class Illness {
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             fetch = FetchType.LAZY)
     @JoinColumn(name = "medical_card_id", nullable = false)
+    @JsonBackReference
     private MedicalCard medicalCardId;
 }
