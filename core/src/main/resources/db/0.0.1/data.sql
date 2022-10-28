@@ -1,4 +1,4 @@
-set search_path to medical;
+    set search_path to medical;
 
 -- contact
 insert into contact (phone_number, email, profile_link) values ('861-838-9638', 'gcharlesworth0@jimdo.com', 'unicef.org');
@@ -415,7 +415,7 @@ insert into illness (medical_card_id, type_id, heaviness, appearance_dttm, recov
 insert into illness (medical_card_id, type_id, heaviness, appearance_dttm, recovery_dt) values (19, 100, 'M', '2022-08-14 14:08:30', '6/22/2022');
 
 -- person_data
-insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Burkitt', 'Conan', '4/21/2022', 98, 'M', 17, 46, null);
+insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Burkitt', 'Conan', '4/21/2022', 98, 'M', 2, 1, null);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Roelvink', 'Flossi', '9/15/2022', 52, 'F', 97, 40, null);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Bingham', 'Melisse', '8/24/2022', 63, 'F', 64, 89, null);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Enns', 'Katherina', '5/11/2022', 53, 'F', 55, 69, null);
