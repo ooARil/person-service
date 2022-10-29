@@ -1,8 +1,10 @@
-package liga.medical.personservice.core.model;
+package liga.medical.personservice.core.model.entity;
 
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
@@ -12,9 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,15 +22,16 @@ import java.util.Set;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "contact")
+@Table(name = "contact", schema = "medical")
 public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "phone_number", nullable = false, length = 32)
     private String phoneNumber;
@@ -42,11 +43,12 @@ public class Contact {
     private String profileLink;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "contactId")
+    @JsonManagedReference
     private Set<Address> addressIdSet;
 
-    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-            mappedBy = "contactId", fetch = FetchType.LAZY)
-    private PersonData personDataId;
+//    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+//            mappedBy = "contactId", fetch = FetchType.LAZY)
+//    private PersonData personDataId;
 
     public void addAddressToContact(Address address) {
         if (addressIdSet == null) {

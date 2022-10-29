@@ -1,5 +1,6 @@
-package liga.medical.personservice.core.model;
+package liga.medical.personservice.core.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Setter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,13 +22,13 @@ import javax.persistence.FetchType;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "address")
+@Table(name = "address", schema = "medical")
 public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "country_id", nullable = false)
     private long countryId;
@@ -50,5 +51,6 @@ public class Address {
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
             fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_id", nullable = false)
+    @JsonBackReference
     private Contact contactId;
 }
