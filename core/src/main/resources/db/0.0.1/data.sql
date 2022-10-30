@@ -1,4 +1,4 @@
-    set search_path to medical;
+set search_path to medical;
 
 -- contact
 insert into contact (phone_number, email, profile_link) values ('861-838-9638', 'gcharlesworth0@jimdo.com', 'unicef.org');

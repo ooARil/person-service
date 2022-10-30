@@ -1,3 +1,5 @@
+set search_path to medical;
+
 create table if not exists medical_card
 (
     id            bigserial not null,
