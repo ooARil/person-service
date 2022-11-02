@@ -16,11 +16,29 @@ public class MyLoggingAspect {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         String methodName = methodSignature.getName();
 
+        System.out.println("\n*********************************");
         System.out.println("Начало работы метода: " + methodName);
     }
 
     @AfterReturning("execution(* liga.medical.personservice.core.controller.*.*(..))")
     public void afterReturningAllRepositoryMethodAdvice(JoinPoint joinPoint)  {
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        String methodName = methodSignature.getName();
+
+        System.out.println("Метод был успешно отработан: " + methodName);
+    }
+
+    @Before("execution(* liga.medical.personservice.core.security.controller.*.*(..))")
+    public void beforeAllSecurityRepositoryMethodAdvice(JoinPoint joinPoint)  {
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        String methodName = methodSignature.getName();
+
+        System.out.println("\n*********************************");
+        System.out.println("Начало работы метода: " + methodName);
+    }
+
+    @AfterReturning("execution(* liga.medical.personservice.core.security.controller.*.*(..))")
+    public void afterReturningAllSecurityRepositoryMethodAdvice(JoinPoint joinPoint)  {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         String methodName = methodSignature.getName();
 

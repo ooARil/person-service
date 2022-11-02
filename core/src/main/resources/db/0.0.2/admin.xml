@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+    <changeSet id="5" author="ilinskiyar">
+        <comment>Добавление ADMIN - пользователя</comment>
+
+        <insert tableName="users" schemaName="medical">
+            <column name="username" value="administrator"/>
+<!--            value = administrator-->
+            <column name="password" value="$2a$10$wEd0ALLs6Dm5uNYO5Cu5auZiXOvAcEgKFZh/weaR3m4vA7O0AWTx2"/>
+        </insert>
+
+        <insert tableName="user_role" schemaName="medical">
+            <column name="user_id" value="1"/>
+            <column name="role_id" value="2"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>
