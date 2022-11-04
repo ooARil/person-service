@@ -45,19 +45,19 @@ public class MedicalCard {
     @Column(name = "comment")
     private String comment;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicalCardId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicalCard")
     @JsonManagedReference
-    private List<Illness> illnessIdList;
+    private List<Illness> illnessList;
 
 //    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
 //            mappedBy = "medicalCardId", fetch = FetchType.LAZY)
 //    private PersonData personDataId;
 
     public void addIllnessToMedicalCard(Illness illness) {
-        if (illnessIdList == null) {
-            illnessIdList = new ArrayList<>();
+        if (illnessList == null) {
+            illnessList = new ArrayList<>();
         }
-        illnessIdList.add(illness);
-        illness.setMedicalCardId(this);
+        illnessList.add(illness);
+        illness.setMedicalCard(this);
     }
 }

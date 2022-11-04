@@ -52,5 +52,5 @@ public class Address {
             fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_id", nullable = false)
     @JsonBackReference
-    private Contact contactId;
+    private Contact contact;
 }

@@ -49,5 +49,5 @@ public class Illness {
             fetch = FetchType.LAZY)
     @JoinColumn(name = "medical_card_id", nullable = false)
     @JsonBackReference
-    private MedicalCard medicalCardId;
+    private MedicalCard medicalCard;
 }
