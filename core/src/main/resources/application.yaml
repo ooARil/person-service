@@ -31,6 +31,26 @@ spring:
 
   main:
     allow-circular-references: true
+    banner-mode: off
+
+logging:
+  file:
+    name: person-service.log
+  level:
+    org.springframework.jdbc.core: TRACE
+  logback:
+    rollingpolicy:
+      clean-history-on-start: true
+      max-file-size: 5MB
+
+management:
+  endpoint:
+    loggers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "health, info, loggers"
 
 mybatis:
   configuration:
