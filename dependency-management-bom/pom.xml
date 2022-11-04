@@ -16,6 +16,7 @@
         <!--        Проектные настройки\версии-->
         <mybatis.version>3.5.5</mybatis.version>
         <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
+        <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
         <liquibase-core.version>4.10.0</liquibase-core.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
     </properties>
@@ -34,6 +35,11 @@
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${springboot.test.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox-boot-starter.version}</version>
             </dependency>
 
 
