@@ -1,7 +1,7 @@
 set search_path to medical;
 
 -- Объединил информацию с таблиц person_data, medical_card и illness
-create view person_medical_card as
+create or replace view person_medical_card as
 select mc.id,
        pd.last_name,
        pd.first_name,

@@ -42,19 +42,19 @@ public class Contact {
     @Column(name = "profile_link")
     private String profileLink;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contactId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact")
     @JsonManagedReference
-    private Set<Address> addressIdSet;
+    private Set<Address> addressSet;
 
 //    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
 //            mappedBy = "contactId", fetch = FetchType.LAZY)
 //    private PersonData personDataId;
 
     public void addAddressToContact(Address address) {
-        if (addressIdSet == null) {
-            addressIdSet = new HashSet<>();
+        if (addressSet == null) {
+            addressSet = new HashSet<>();
         }
-        addressIdSet.add(address);
-        address.setContactId(this);
+        addressSet.add(address);
+        address.setContact(this);
     }
 }

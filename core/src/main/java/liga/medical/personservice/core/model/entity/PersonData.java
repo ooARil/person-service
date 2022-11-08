@@ -54,26 +54,26 @@ public class PersonData {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_id", nullable = false)
-    private Contact contactId;
+    private Contact contact;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "medical_card_id", nullable = false)
-    private MedicalCard medicalCardId;
+    private MedicalCard medicalCard;
 
     @ManyToOne
     @JoinColumn(name = "parent_id", columnDefinition = "check ( parent_id <> person_data.id )")
     @JsonBackReference
-    private PersonData parentId;
+    private PersonData parent;
 
-    @OneToMany(mappedBy = "parentId", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     @JsonManagedReference
-    private Set<PersonData> parentIdSet;
+    private Set<PersonData> parentSet;
 
     public void addChildToParent(PersonData personData) {
-        if (parentIdSet == null) {
-            parentIdSet = new HashSet<>();
+        if (parentSet == null) {
+            parentSet = new HashSet<>();
         }
-        parentIdSet.add(personData);
-        personData.setParentId(this);
+        parentSet.add(personData);
+        personData.setParent(this);
     }
 }
