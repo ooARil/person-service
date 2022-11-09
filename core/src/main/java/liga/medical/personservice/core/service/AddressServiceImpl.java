@@ -1,6 +1,6 @@
 package liga.medical.personservice.core.service;
 
-import liga.medical.personservice.core.model.entity.Address;
+import liga.medical.personservice.core.model.Address;
 import liga.medical.personservice.core.repos.api.AddressRepository;
 import liga.medical.personservice.core.service.api.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;

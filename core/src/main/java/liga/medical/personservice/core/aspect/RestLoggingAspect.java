@@ -6,18 +6,24 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
-@Slf4j
 @Component
 @Aspect
+@Slf4j
 public class RestLoggingAspect {
 
-    @Before("MyPointcuts.allRestMethods()")
+    @Pointcut("execution(* liga.medical.personservice.core.controller.*.*(..))")
+    public void allRestMethods() {
+
+    }
+
+    @Before("allRestMethods()")
     public void beforeAllRepositoryMethodAdvice(JoinPoint joinPoint) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String userName = auth.getName();
@@ -29,7 +35,7 @@ public class RestLoggingAspect {
                 userName, className, methodName, Arrays.deepToString(methodArgs));
     }
 
-    @AfterReturning("MyPointcuts.allRestMethods()")
+    @AfterReturning("allRestMethods()")
     public void afterReturningAllRepositoryMethodAdvice(JoinPoint joinPoint) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String userName = auth.getName();
@@ -41,7 +47,7 @@ public class RestLoggingAspect {
                 userName, className, methodName, Arrays.deepToString(methodArgs));
     }
 
-    @AfterThrowing(pointcut = "MyPointcuts.allRestMethods()", throwing = "exception")
+    @AfterThrowing(pointcut = "allRestMethods()", throwing = "exception")
     public void afterThrowingAllRepositoryMethodAdvice(JoinPoint joinPoint,
                                                        Throwable exception) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

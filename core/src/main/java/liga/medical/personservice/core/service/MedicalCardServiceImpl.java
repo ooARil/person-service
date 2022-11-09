@@ -1,6 +1,6 @@
 package liga.medical.personservice.core.service;
 
-import liga.medical.personservice.core.model.entity.MedicalCard;
+import liga.medical.personservice.core.model.MedicalCard;
 import liga.medical.personservice.core.repos.api.MedicalCardRepository;
 import liga.medical.personservice.core.service.api.MedicalCardService;
 import org.springframework.beans.factory.annotation.Autowired;

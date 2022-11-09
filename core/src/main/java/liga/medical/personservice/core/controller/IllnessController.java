@@ -3,13 +3,12 @@ package liga.medical.personservice.core.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import liga.medical.personservice.core.model.entity.Illness;
+import liga.medical.personservice.core.model.Illness;
 import liga.medical.personservice.core.service.api.IllnessService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,30 +23,21 @@ public class IllnessController {
     @Autowired
     IllnessService illnessService;
 
-    @PostMapping("/add")
-    @ApiOperation(value = "Добавление болезни в медицинскую карту")
-    public Illness addIllness(@RequestBody Illness illness) {
-        illnessService.save(illness);
-        return illness;
-    }
-
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     @ApiOperation(value = "Получение болезни из медицинской картой по ID")
-    public Illness getIllnessById(@PathVariable
+    public Illness findById(@PathVariable
                                       @ApiParam(name = "id", value = "Illness id", example = "1") Long id) {
         return illnessService.findById(id);
     }
 
-    @GetMapping("/get")
+    @GetMapping
     @ApiOperation(value = "Получени списка болезней из медицинской карты")
-    public List<Illness> getAllIllnesses() {
+    public List<Illness> findAll() {
         return illnessService.findAll();
     }
 
-    @DeleteMapping("/delete/{id}")
-    @ApiOperation(value = "Удаление болезни из медицинской карты по ID")
-    public void deleteIllnessById(@PathVariable
-                                      @ApiParam(name = "id", value = "Illness id", example = "1")Long id) {
-        illnessService.deleteById(id);
+    @PutMapping
+    public Illness update(@RequestBody Illness illness) {
+        return illnessService.save(illness);
     }
 }

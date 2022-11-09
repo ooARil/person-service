@@ -1,7 +1,7 @@
 package liga.medical.personservice.core.service;
 
-import liga.medical.personservice.core.mapper.PersonDataMapper;
-import liga.medical.personservice.core.model.pojo.PersonData;
+import liga.medical.personservice.core.model.PersonData;
+import liga.medical.personservice.core.repos.api.PersonDataRepository;
 import liga.medical.personservice.core.service.api.PersonDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,25 +12,25 @@ import java.util.List;
 public class PersonDataServiceImpl implements PersonDataService {
 
     @Autowired
-    PersonDataMapper personDataMapper;
+    PersonDataRepository personDataRepository;
 
     @Override
-    public long save(PersonData entity) {
-        return personDataMapper.save(entity);
+    public PersonData save(PersonData entity) {
+        return personDataRepository.save(entity);
     }
 
     @Override
     public PersonData findById(Long id) {
-        return personDataMapper.findById(id);
+        return personDataRepository.findById(id).get();
     }
 
     @Override
     public List<PersonData> findAll() {
-        return personDataMapper.findAll();
+        return personDataRepository.findAll();
     }
 
     @Override
     public void deleteById(Long id) {
-        personDataMapper.deleteById(id);
+        personDataRepository.deleteById(id);
     }
 }

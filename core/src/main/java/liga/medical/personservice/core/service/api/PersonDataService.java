@@ -1,12 +1,12 @@
 package liga.medical.personservice.core.service.api;
 
-import liga.medical.personservice.core.model.pojo.PersonData;
+import liga.medical.personservice.core.model.PersonData;
 
 import java.util.List;
 
 public interface PersonDataService {
 
-    long save(PersonData entity);
+    PersonData save(PersonData entity);
 
     PersonData findById(Long id);
 

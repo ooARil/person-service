@@ -1,6 +1,6 @@
 package liga.medical.personservice.core.service.api;
 
-import liga.medical.personservice.core.model.entity.Contact;
+import liga.medical.personservice.core.model.Contact;
 
 import java.util.List;
 

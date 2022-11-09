@@ -1,6 +1,6 @@
 package liga.medical.personservice.core.service.api;
 
-import liga.medical.personservice.core.model.entity.Illness;
+import liga.medical.personservice.core.model.Illness;
 
 import java.util.List;
 

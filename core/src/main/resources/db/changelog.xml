@@ -5,8 +5,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
     <include file="db/0.0.1/schema.sql"/>
     <include file="db/0.0.1/data.sql"/>
-    <include file="db/0.0.2/security.xml"/>
-    <include file="db/0.0.2/basic-roles.xml"/>
-    <include file="db/0.0.2/admin.xml"/>
-    <include file="db/0.0.3/auth-log.xml"/>
+    <include file="db/0.0.4/signals.xml"/>
+<!--    <include file="db/0.0.2/security.xml"/>-->
+<!--    <include file="db/0.0.2/basic-roles.xml"/>-->
+<!--    <include file="db/0.0.2/admin.xml"/>-->
+<!--    <include file="db/0.0.3/auth-log.xml"/>-->
 </databaseChangeLog>
